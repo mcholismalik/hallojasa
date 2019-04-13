@@ -11,14 +11,8 @@ const modelvalid = require("../middleware/validation/model-validation")
 const router = express.Router()
 
 router.post('/', validate(modelvalid.findnumber), (req, res) => {
-    let arr = req.body.number.split('')
-    
-    console.log(arr)
-    // console.log(req.body.number.length)
-    // for(let n in arr) {
-    //     console.log(n)
-    // }
-    res.json(ApiResponse.ok(req.body.number))
+    let arr = req.body.number.toString().split('');
+    (arr.includes(req.body.find.toString())) ? res.json(ApiResponse.ok(true)) :  res.json(ApiResponse.ok(false))
 })
 
 module.exports = router
