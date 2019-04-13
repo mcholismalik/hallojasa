@@ -14,7 +14,6 @@ const Customers = require('../model/customers.model')
 const router = express.Router()
 
 router.post('/login', validate(modelvalid.login), async (req, res) => {
-    console.log(req.body)
     try {
         let data = await Customers.findOne({ where: { username: req.body.username } })
         if (data) {
@@ -31,6 +30,8 @@ router.post('/login', validate(modelvalid.login), async (req, res) => {
             } else {
                 res.json(ApiResponse.unAuthorized())
             }
+        } else {
+            res.json(ApiResponse.notFound())
         }
     } catch (err) {
         console.log('tes')
