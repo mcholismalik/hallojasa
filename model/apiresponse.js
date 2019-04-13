@@ -47,7 +47,8 @@ const ApiResponse = {
     badGateway: (message = 'Bad Gateway', data = {}) => {
         return error(502, message, data)
     },
-    unknownError: (message = 'Unknown Error', data = {}) => {
+    unknownError: (message = 'Unknown Error', data) => {
+        data = ({ name: data.name, message: data.message } || {})
         return error(505, message, data)
     }
 }
