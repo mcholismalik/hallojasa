@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
                 }
             })
         } catch(err) {
-            return res.json(ApiResponse.unAuthorized('Invalid token', err))
+            res.json(ApiResponse.unAuthorized('Invalid token', err))
         }
     } else {        
         res.json(ApiResponse.unAuthorized('Token not found'))
